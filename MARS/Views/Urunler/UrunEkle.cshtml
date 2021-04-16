@@ -1,0 +1,167 @@
+﻿@model MARS.Models.Entity.Urunler
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("UrunEkle", "Urunler", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{ 
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>Ürün Ekle</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/DokumanListe/ListeIndex/">DokumanListe</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <strong>Ürün Ekle</strong>
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+<br />
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Dokuman Oluştur</h5>
+                </div>
+                <div class="ibox-content">
+                    <a href="~/KapakSayfa/KapakEkle/" type="button" class="btn btn-primary">Kapak Sayfası</a>
+                    <a href="~/OnaySayfasi/OnaySayfaIndex/" type="button" class="btn btn-secondary">Onay Sayfası</a>
+                    <a href="~/DegisiklikIzleme/DegisiklikEkle/" type="button" class="btn btn-success">Değişiklik İzleme</a>
+                    <a href="~/ReferansDokuman/ReferansEkle/" type="button" class="btn btn-info">Referans Dokümanlar</a>
+                    <a href="~/YazilimVersiyon/YazilimEkle/" type="button" class="btn btn-warning">Yazılım ve Versiyon</a>
+                    <a href="~/EmniyetTalimatlari/EmniyetEkle/" type="button" class="btn btn-light">Emniyet Talimatları</a>
+                    <a href="~/Urunler/UrunEkle/" type="button" class="btn btn-danger">Ürün Teknik Özellikleri</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Kapak Sayfası Ekle</h5>
+                </div>
+                <div class="ibox-content">
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Dokuman No</label>
+                            @Html.DropDownListFor(x => x.DokumanListeId, (List<SelectListItem>)ViewBag.dgr41, "Doküman Seçiniz.", new { @class = "form-control", id = "dokuman" })
+                            <br /><br />
+                            <label>Ürün Adı</label>
+                            @Html.TextBoxFor(x => x.UrunAdi, new { @class = "form-control" })
+                            <br />
+                            <label>Ürün Görseli Seç</label>
+                            <input type="file" name="ResimYolu" />
+                            <br />
+                            <label>Resim Yazısı</label>
+                            @Html.TextBoxFor(x => x.ResimYazisi, new { @class = "form-control" })
+                            <br />
+                            <label>Üretici Firma Adı</label>
+                            @Html.TextBoxFor(x => x.UreticiFirmaAdi, new { @class = "form-control" })
+                            <br />
+                            <label>Üretici Firma Adresi</label>
+                            @Html.TextBoxFor(x => x.UreticiFirmaAdresi, new { @class = "form-control" })
+                            <br />
+                            <label>Üretici Firma Parça No</label>
+                            @Html.TextBoxFor(x => x.UreticiFirmaParcaNo, new { @class = "form-control" })
+                            <br />
+                            <label>Tedarikçi Firma Adı</label>
+                            @Html.TextBoxFor(x => x.TedarikciFirmaAdi, new { @class = "form-control" })
+                            <br />
+                            <label>Tedarikçi Firma Adresi</label>
+                            @Html.TextBoxFor(x => x.TedarikciFirmaAdresi, new { @class = "form-control" })
+                            <br />
+                            <label>Tedarikçi Firma Parça No</label>
+                            @Html.TextBoxFor(x => x.TedarikciFirmaParcaNo, new { @class = "form-control" })
+                            <br />
+                            <label>Marka</label>
+                            @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+                            <br />
+                            <label>Model</label>
+                            @Html.TextBoxFor(x => x.Model, new { @class = "form-control" })
+                            <br />
+                            <label>Tablo Başlık</label>
+                            @Html.TextBoxFor(x => x.TabloBaslik, new { @class = "form-control" })
+                            <br />
+                            <label>Buraya Teknik Özellikleri Yazınız</label>
+                            <div class="clearfix">
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s1, new { @class = "form-control" })
+                                </div>
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s11, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s2, new { @class = "form-control" })
+                                </div>
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s22, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s3, new { @class = "form-control" })
+                                </div>
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s33, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s4, new { @class = "form-control" })
+                                </div>
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s44, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s5, new { @class = "form-control" })
+                                </div>
+                                <div class="w-50 float-left">
+                                    @Html.TextBoxFor(x => x.s55, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <br />
+                            <label>Tablo Yazısı</label>
+                            @Html.TextBoxFor(x => x.TabloYazisi, new { @class = "form-control" })
+                            <br />
+
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-white btn-sm" type="submit">Vazgeç</button>
+                                    <button class="btn btn-primary btn-sm" type="submit">Kaydet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#dokuman').select2();
+            allowClear: true
+        });
+    </script>
+
+}
+}
+
+
+

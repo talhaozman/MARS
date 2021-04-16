@@ -1,0 +1,68 @@
+﻿@using MARS.Models.Entity
+@model List<YazilimVersiyon>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Yazılım ve Versiyon Sayfaları</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">AnaSayfa</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Yazılım ve Versiyon Sayfaları</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h4>Yazılım ve Versiyon Sayfaları</h4>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sıra No</th>
+                                    <th>Yazılım Adı</th>
+                                    <th>Dosyalar</th>
+                                </tr>
+                            </thead>
+                            @foreach (var y in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>@y.SıraNo</td>
+                                        <td>@y.YazilimAd</td>
+                                        <td>
+                                            @Html.ActionLink("Download", "Download", new { fileName = y.YazDosyaYolu})
+                                        </td>
+
+
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

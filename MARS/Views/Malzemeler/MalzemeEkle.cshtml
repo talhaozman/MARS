@@ -1,0 +1,323 @@
+﻿@model MARS.Models.Entity.Malzemeler
+@{
+    ViewBag.Title = "MalzemeEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Malzeme Ekle</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/Malzemeler/MalzemeIndex/">Malzeme Listesi</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Malzeme Ekle</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<br />
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Malzeme Ekle</h5>
+                </div>
+                <div class="ibox-content">
+                    <form method="post">
+                        <div>
+                            <label>Malzeme Adı</label>
+                            @Html.TextBoxFor(x => x.MalzemeAdi, new { @class = "form-control" })
+                            <br />
+                            <label>Uzun Tanımı</label>
+                            @Html.TextBoxFor(x => x.UzunTanimi, new { @class = "form-control" })
+                            <br />
+                           
+                            <br /><br />
+                            <label>NIIN</label>
+                            <input type="text" name="NIIN" class="form-control" placeholder="XX-XXX-XXXX" />
+                            <br />
+                            <label>INC</label>
+                            <select id="myINC" class="form-control" name="INC"></select>
+                            <br /><br />
+                            <label>NSN</label>
+                            @Html.TextBoxFor(x => x.NSN, new { @class = "form-control" })
+                            <br />
+                            <label>Malzeme Kalemi</label>
+                            <select id="mykalem" class="form-control" name="MalzemeKalemi"></select>
+                            <br /><br />
+                            <label>Standart Norm</label>
+                            @Html.TextBoxFor(x => x.StandartNorm, new { @class = "form-control" })
+                            <br />
+                            <label>Özel Malzeme Kodu</label>
+                            <select id="myozelmlz" class="form-control"></select>
+                            <br /><br />
+                            <label>Ambarlama Sahası Kodu</label>
+                            <select id="myambsah" class="form-control"></select>
+                            <br /> <br />
+                            <label>Onarılabilirlik Kodu</label>
+                            <select id="myonarbil" class="form-control"></select>
+                            <br /><br />
+                            <label>Elden Çıkarma Yöntemi</label>
+                            <select id="myelcik" class="form-control"></select>
+                            <br /><br />
+                            <label>Raf Ömrü Kodu</label>
+                            <select id="myrafomru" class="form-control"></select>
+                            <br /><br />
+                            <label>Malzeme Atık Kodu</label>
+                            <select id="myatik" class="form-control"></select>
+                            <br /><br />
+                            <label>Marka Model Tip</label>
+                            @Html.TextBoxFor(x => x.MarkaModelTip, new { @class = "form-control" })
+                            <br />
+                            <label>Birim</label>
+                            @Html.TextBoxFor(x => x.Birim, new { @class = "form-control" })
+                            <br />
+                            <label>Aktif</label>
+                            @Html.TextBoxFor(x => x.Aktif, new { @class = "form-control" })
+                            <br />
+                            <label>Minimum Tedarik Süresi</label>
+                            @Html.TextBoxFor(x => x.MinimumTedarikSuresi, new { @class = "form-control" })
+                            <br />
+                            <label>Minimum Sipariş Miktarı</label>
+                            @Html.TextBoxFor(x => x.MinimumSiparisMiktari, new { @class = "form-control" })
+                            <br />
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group row">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-white btn-sm" type="submit">Vazgeç</button>
+                                <button class="btn btn-primary btn-sm" type="submit">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $('#myINC').select2({
+                minimumInputLength: 2,
+                ajax: {
+                    url: '/Malzemeler/GetList',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.items, function (item) {
+                                return { id: item.Id, text: item.Text };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('#mysinif').select2({
+                minimumInputLength: 2,
+                ajax: {
+                    url: '/Malzemeler/GetListSinif',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.items, function (item) {
+                                return { id: item.Id, text: item.Text };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('#myatik').select2({
+                minimumInputLength: 2,
+                ajax: {
+                    url: '/Malzemeler/GetListAtik',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.items, function (item) {
+                                return { id: item.Id, text: item.Text };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('#mykalem').select2({
+                ajax: {
+                    url: '/Malzemeler/GetListKalem',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.items, function (item) {
+                                return { id: item.Id, text: item.Text };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('#myozelmlz').select2({
+                ajax: {
+                    url: '/Malzemeler/GetListOzelmlz',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.items, function (item) {
+                                return { id: item.Id, text: item.Text };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('#myambsah').select2({
+                ajax: {
+                    url: '/Malzemeler/GetListAmbSah',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.items, function (item) {
+                                return { id: item.Id, text: item.Text };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('#myonarbil').select2({
+                ajax: {
+                    url: '/Malzemeler/GetListOnarBil',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.items, function (item) {
+                                return { id: item.Id, text: item.Text };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('#myelcik').select2({
+                ajax: {
+                    url: '/Malzemeler/GetListElCik',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.items, function (item) {
+                                return { id: item.Id, text: item.Text };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('#myrafomru').select2({
+                ajax: {
+                    url: '/Malzemeler/GetListRafOmru',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.items, function (item) {
+                                return { id: item.Id, text: item.Text };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+
+
+    </script>
+
+
+
+}
+

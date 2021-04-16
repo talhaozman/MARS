@@ -1,0 +1,163 @@
+﻿@model MARS.Models.Entity.OnaySayfasi
+@{
+    ViewBag.Title = "OnaySayfaIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Onay Sayfası Oluştur</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/DokumanListe/ListeIndex/">DokumanListe</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Onay Sayfası Oluştur</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<br />
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Doküman Oluştur</h5>
+                </div>
+                <div class="ibox-content">
+                    <a href="~/KapakSayfa/KapakEkle/" type="button" class="btn btn-primary">Kapak Sayfası</a>
+                    <a href="~/OnaySayfasi/OnaySayfaIndex/" type="button" class="btn btn-secondary">Onay Sayfası</a>
+                    <a href="~/DegisiklikIzleme/DegisiklikEkle/" type="button" class="btn btn-success">Değişiklik İzleme</a>
+                    <a href="~/ReferansDokuman/ReferansEkle/" type="button" class="btn btn-info">Referans Dokümanlar</a>
+                    <a href="~/YazilimVersiyon/YazilimEkle/" type="button" class="btn btn-warning">Yazılım ve Versiyon</a>
+                    <a href="~/EmniyetTalimatlari/EmniyetEkle/" type="button" class="btn btn-light">Emniyet Talimatları</a>
+                    <a href="~/Urunler/UrunEkle/" type="button" class="btn btn-danger">Ürün Teknik Özellikleri</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Onay Sayfası Ekle</h5>
+                </div>
+                <div class="ibox-content">
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Dokuman No</label>
+                            @Html.DropDownListFor(x => x.DokumanListeId, (List<SelectListItem>)ViewBag.dgr41, "Doküman Seçiniz.", new { @class = "form-control", id = "dokuman" })
+                            <br /><br />
+                            <label>Firma Dokümanı</label>
+                            @Html.TextBoxFor(x => x.FirmaDokumani, new { @class = "form-control" })
+                            <br />
+                            <label>İlk Yayım Tarihi</label>
+                            <input class="form-control" type="date" name="IlkYayimTarih" />
+                            <br />
+                            <label>Yayım Tarihi</label>
+                            <input class="form-control" type="date" name="YayimTarihi" />
+                            <br />
+                            <label>Sayfa Sayısı</label>
+                            @Html.TextBoxFor(x => x.SayfaSayisi, new { @class = "form-control" })
+                            <br />
+                            <label>Ölçek</label>
+                            @Html.TextBoxFor(x => x.Olcek, new { @class = "form-control" })
+                            <br />
+                            <label>Sözleşme Maddesi</label>
+                            @Html.TextBoxFor(x => x.SozlesmeMaddesi, new { @class = "form-control" })
+                            <br />
+                            <label>Gizlilik Derecesi</label>
+                            @Html.TextBoxFor(x => x.GizlilikDerece, new { @class = "form-control" })
+                            <br />
+                            <label>PİO Koordinesi</label>
+                            @Html.TextBoxFor(x => x.PioKoordinesi, new { @class = "form-control" })
+                            <br />
+                            <div class="clearfix">
+                                <div class="w-25 float-left">
+                                    <label>Hazırlayanın Görevi</label>
+                                    @Html.TextBoxFor(x => x.HazGorev, new { @class = "form-control" })
+                                </div>
+                                <div class="w-25 float-left">
+                                    <label>Hazırlayanın Kimliği</label>
+                                    @Html.TextBoxFor(x => x.HazKimlik, new { @class = "form-control" })
+                                </div>
+                                <div class="w-25 float-left">
+                                    <label>Hazırlayanın Onay Tarihi</label>
+                                    <input class="form-control" type="date" name="HazTarih" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="clearfix">
+                                <div class="w-25 float-left">
+                                    <label>Koordinatörün Görevi</label>
+                                    @Html.TextBoxFor(x => x.KoorGorev, new { @class = "form-control" })
+                                </div>
+                                <div class="w-25 float-left">
+                                    <label>Koordinatörün Kimliği</label>
+                                    @Html.TextBoxFor(x => x.KoorKimlik, new { @class = "form-control" })
+                                </div>
+                                <div class="w-25 float-left">
+                                    <label>Koordinatör Onay Tarihi</label>
+                                    <input class="form-control" type="date" name="KoorTarih" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="clearfix">
+                                <div class="w-25 float-left">
+                                    <label>Alt Yüklenici Görevi</label>
+                                    @Html.TextBoxFor(x => x.AltYukOnayGorev, new { @class = "form-control" })
+                                </div>
+                                <div class="w-25 float-left">
+                                    <label>Alt Yüklenici Kimliği</label>
+                                    @Html.TextBoxFor(x => x.AltYukOnayKimlik, new { @class = "form-control" })
+                                </div>
+                                <div class="w-25 float-left">
+                                    <label>Alt Yüklenici Onay Tarihi</label>
+                                    <input class="form-control" type="date" name="AltYukOnayTarih" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="clearfix">
+                                <div class="w-25 float-left">
+                                    <label>Yüklenici Görevi</label>
+                                    @Html.TextBoxFor(x => x.YukOnayGorev, new { @class = "form-control" })
+                                </div>
+                                <div class="w-25 float-left">
+                                    <label>Yüklenici Kimliği</label>
+                                    @Html.TextBoxFor(x => x.YukOnayKimlik, new { @class = "form-control" })
+                                </div>
+                                <div class="w-25 float-left">
+                                    <label>Yüklenici Onay Tarihi</label>
+                                    <input class="form-control" type="date" name="YukOnayTarih" />
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-white btn-sm" type="submit">Vazgeç</button>
+                                    <button class="btn btn-primary btn-sm" type="submit">Kaydet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#dokuman').select2();
+            allowClear: true
+        });
+    </script>
+
+}
+

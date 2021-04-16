@@ -1,0 +1,81 @@
+﻿@model MARS.Models.Entity.Kullanicilar
+@{
+    ViewBag.Title = "KullaniciGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2> Kullanıcı Güncelle</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/Kullanicilar/Kullanicilar/">Kullanıcılar</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Kullanıcı Güncelle</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<br />
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Kullanıcı Güncelle</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        @using (Html.BeginForm("KullaniciGuncelle", "Kullanicilar", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(x => x.KullaniciId)
+                            <label> TC.Kimlik No</label>
+                            @Html.TextBoxFor(x => x.TCkimlik, new { @class = "form-control" })
+                            <br />
+                            <label>Personel Adı</label>
+                            @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+                            <br />
+                            <label>Personel Soyadı</label>
+                            @Html.TextBoxFor(x => x.KullaniciSoyadi, new { @class = "form-control" })
+                            <br />
+                            <label>Telefon No</label>
+                            @Html.TextBoxFor(x => x.KullaniciTel, new { @class = "form-control" })
+                            <br />
+                            <label>Departman</label>
+                            @Html.TextBoxFor(x => x.KullaniciDepartman, new { @class = "form-control" })
+                            <br />
+                            <label>Kullanıcı Ünvan</label>
+                            @Html.TextBoxFor(x => x.KullaniciUnvan, new { @class = "form-control" })
+                            <br />
+                            <label>Kullanıcı Mail</label>
+                            @Html.TextBoxFor(x => x.KullaniciMail, new { @class = "form-control" })
+                            <br />
+                            <label>Kullanıcı Mail</label>
+                            @Html.TextBoxFor(x => x.KullaniciMail, new { @class = "form-control" })
+                            <br />
+                            <label>Kullanıcı Şifre</label>
+                            @Html.TextBoxFor(x => x.KullaniciSifre, new { @class = "form-control" })
+                            <br />
+
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-white btn-sm" type="submit">Vazgeç</button>
+                                    <button class="btn btn-warning btn-sm" type="submit">Güncelle</button>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

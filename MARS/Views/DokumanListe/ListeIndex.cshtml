@@ -1,0 +1,84 @@
+﻿@using MARS.Models.Entity
+@model List<DokumanListe> 
+@{
+    ViewBag.Title = "ListeIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Doküman Listesi</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">AnaSayfa</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Doküman Listesi</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h4>Doküman Listesi</h4>
+                    <a href="/DokumanListe/DokumanEkle/" type="button" class="btn btn-xs btn-primary pull-right" style="margin: 6px">Doküman Ekle</a>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered" >
+                            <thead>
+                                <tr>
+                                    <th>Proje Kodu</th>
+                                    <th>TEK.DOK.ADI</th>
+                                    <th>TEK.DOK.NO</th>
+                                    <th>TEK.DOK.TİPİ</th>
+                                    <th>DataSheetler</th>
+                                    <th>Dök. Oluştur</th>
+                                    <th>İŞLEMLER</th>
+                                </tr>
+                            </thead>
+                            @foreach (var d in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>@d.Projeler.ProjeKodu</td>
+                                        <td>@d.TekdokAd</td>
+                                        <td>@d.TekdokNo</td>
+                                        <td>@d.TekdokTip</td>
+                                        <td>
+                                            <a href="/DokumanListe/DokumanDosyaYukle/" type="button" class="btn btn-xs btn-info" style="margin: 6px">DataSheet</a>
+                                        </td>
+                                        <td>
+                                            <a href="/DokOlustur/Index/" type="button" class="btn btn-xs btn-success" style="margin: 6px">Dok. Oluşrur</a>
+                                        </td>
+
+                                        <td>
+                                            <div class="btn-group">
+                                                <button data-toggle="dropdown" class="btn btn-xs btn-primary">İşlemler <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+
+                                                    <li><a href="/DokumanListe/DokumanGetir/@d.DokumanListeId">Güncelle</a></li>
+                                                    <li><a href="/DokumanListe/DokumanSil/@d.DokumanListeId">Sil</a></li>
+
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

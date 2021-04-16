@@ -1,0 +1,210 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>DSG Defense</title>
+
+    <link href="~/Tema/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Tema/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!--Select2-->
+    <link href="~/Content/select2.css" rel="stylesheet" />
+    <!-- Toastr style -->
+    <link href="~/Tema/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="~/Tema/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="~/Tema/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <link href="~/Tema/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+
+    <link href="~/Tema/css/animate.css" rel="stylesheet">
+    <link href="~/Tema/css/style.css" rel="stylesheet">
+    @RenderSection("styles", required: false)
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <img alt="image" class="rounded-circle" src="~/Tema/img/profile_small.jpg" />
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="block m-t-xs font-bold">@User.Identity.Name</span>
+                                <span class="text-muted text-xs block">Administrator <b class="caret"></b></span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a class="dropdown-item" href="profile.html">Profil</a></li>
+                                <li><a class="dropdown-item" href="contacts.html">İletişim</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/Kullanicilar/Index/">Çıkış</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/Kullanicilar/Kullanicilar/"><i class="fa fa-diamond"></i> <span class="nav-label">Kullanıcılar</span></a>
+                    </li>
+                    <li>
+                        <a href="/Projeler/ProjeIndex/"><i class="fa fa-diamond"></i> <span class="nav-label">Projeler</span></a>
+                    </li>
+                    <li>
+                        <a href="/Sozlesmeler/SozlesmeIndex/"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Sözleşmeler</span></a>
+
+                    </li>
+                    <li>
+                        <a href="/BLDPlani/BLDIndex/"><i class="fa fa-envelope"></i> <span class="nav-label">BLD Planı </span></a>
+
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Dokümanlar</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/DokumanListe/ListeIndex/">Doküman Listesi</a></li>
+                            <li>
+                                <a href="#">Dokuman Veri Bankası <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="/KapakSayfa/KapakIndex">Kapak Sayfaları</a>
+                                    </li>
+                                    <li>
+                                        <a href="/OnaySayfasi/OnaySayfa/">Onay Sayfaları</a>
+                                    </li>
+                                    <li>
+                                        <a href="/DegisiklikIzleme/DegisiklikIndex/">Değişiklik İzleme</a>
+                                    </li>
+                                    <li>
+                                        <a href="/ReferansDokuman/RefIndex/">Referans Dokuman</a>
+                                    </li>
+                                    <li>
+                                        <a href="/YazilimVersiyon/Index/">Yazılım ve Versiyon</a>
+                                    </li>
+                                    <li>
+                                        <a href="/EmniyetTalimatlari/EmniyetIndex/">Emniyet Talimatları</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Urunler/UrunlerIndex/">Ürün Teknik Özellikleri</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li>
+                        <a href="/BakimKartlari/PBSIndex/"><i class="fa fa-envelope"></i> <span class="nav-label">Bakım Kartları </span></a>
+                    </li>
+                    <li>
+                        <a href="/BakimListesi/BakimListeIndex/"><i class="fa fa-envelope"></i> <span class="nav-label">Bakım Listesi </span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">BİDBAS Veri Tabloları</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Bakım Malzemeleri</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/Malzemeler/MalzemeIndex/">Bakım Malzeme Listesi</a></li>
+                            <li><a href="/Urunler/UrunIndex/">Ürün Listesi</a></li>
+                            <li><a href="/MalzemeTurleri/Index/">Malzeme Türleri</a></li>
+                            <li><a href="jq_grid.html">Firma Öneri Listesi</a></li>
+                            <li><a href="jq_grid.html">Gemi Sahil Yedekleri</a></li>
+                            <li><a href="jq_grid.html">DKÖT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="Arama" class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li style="padding: 20px">
+                            <span class="m-r-sm text-muted welcome-message">MARS Yazılıma Hoşgeldiniz</span>
+                        </li>
+                        <li>
+                            <a href="/Kullanicilar/Index/">
+                                <i class="fa fa-sign-out"></i> Çıkış
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            @RenderBody()
+
+            <div class="footer">
+
+                <div>
+                    <strong>Copyright</strong> DSG DEFENSE &copy; 2021
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="~/Tema/js/jquery-3.1.1.min.js"></script>
+    <script src="~/Tema/js/popper.min.js"></script>
+    <script src="~/Tema/js/bootstrap.js"></script>
+    <script src="~/Tema/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Tema/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="~/Tema/js/plugins/flot/jquery.flot.js"></script>
+    <script src="~/Tema/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="~/Tema/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="~/Tema/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="~/Tema/js/plugins/flot/jquery.flot.pie.js"></script>
+    <!--Select2-->
+    <script src="~/Scripts/select2.full.min.js"></script>
+    <script src="~/Tema/js/plugins/iCheck/icheck.min.js"></script>
+    <!-- Peity -->
+    <script src="~/Tema/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="~/Tema/js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="~/Tema/js/inspinia.js"></script>
+    <script src="~/Tema/js/plugins/pace/pace.min.js"></script>
+
+
+
+    <!-- jQuery UI -->
+    <script src="~/Tema/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="~/Tema/js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="~/Tema/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="~/Tema/js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS-->
+    <script src="~/Tema/js/plugins/chartJs/Chart.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="~/Tema/js/plugins/toastr/toastr.min.js"></script>
+    <script src="~/Tema/js/plugins/dataTables/datatables.min.js"></script>
+    <script src="~/Tema/js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+﻿@model MARS.Models.Entity.Sozlesmeler
+@{
+    ViewBag.Title = "SozlesmeGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Sözleşme Güncelle</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/Sozlesmeler/SozlesmeIndex/">Sözleşmeler</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Sözleşme Güncelle</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<br />
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Sözleşme Güncelle</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        @using (Html.BeginForm("SozlesmeGuncelle", "Sozlesmeler", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(x => x.SozlesmeId)
+                            <label>Proje Kodu</label>
+                            @Html.DropDownListFor(x => x.ProjeId, (List<SelectListItem>)ViewBag.dgr, "Lütfen Proje Seçiniz.", new { @class = "form-control", id = "proje" })
+                            <br /><br />
+                            <label>İdari</label>
+                            @Html.TextBoxFor(x => x.Idari, new { @class = "form-control" })
+                            <br />
+                            <label>Yüklenici</label>
+                            @Html.TextBoxFor(x => x.Yuklenici, new { @class = "form-control" })
+                            <br />
+                            <label>Alt Yüklenici</label>
+                            @Html.TextBoxFor(x => x.AltYuklenici, new { @class = "form-control" })
+                            <br />
+                            <label>Tedarikiçi</label>
+                            @Html.TextBoxFor(x => x.Tedarikciler, new { @class = "form-control" })
+                            <br />
+
+
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-white btn-sm" type="submit">Vazgeç</button>
+                                    <button class="btn btn-warning btn-sm" type="submit">Güncelle</button>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+            $(document).ready(function () {
+                $('#proje').select2();
+                allowClear: true
+            });
+    </script>
+
+
+
+}
+

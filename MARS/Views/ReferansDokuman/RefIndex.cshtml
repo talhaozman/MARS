@@ -1,0 +1,65 @@
+﻿@using MARS.Models.Entity
+@model List<Referans>
+@{
+    ViewBag.Title = "RefIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Referan Sayfaları</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">AnaSayfa</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Referans Sayfaları</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h4>Referans Sayfaları</h4>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sıra No</th>
+                                    <th>Dokuman Adı</th>
+                                    <th>Dosyalar</th>
+                                </tr>
+                            </thead>
+                            @foreach (var r in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>@r.SıraNo</td>
+                                        <td>@r.RefDokumanAd</td>
+                                        <td>
+                                            @Html.ActionLink("Download", "Download", new { fileName = r.RefDosyaYolu })
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

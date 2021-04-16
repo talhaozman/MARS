@@ -1,0 +1,74 @@
+﻿@using MARS.Models.Entity
+@model List<Projeler>
+@{
+    ViewBag.Title = "ProjeIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Projeler</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">AnaSayfa</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Projeler</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h4>Proje Listesi</h4>
+                    <a href="/Projeler/ProjeEkle/" type="button" class="btn btn-xs btn-primary pull-right" style="margin: 6px">Yeni Proje</a>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-bordered  table-hover dataTables-proje">
+                            <thead>
+                                <tr>
+                                    <th>Proje Adı</th>
+                                    <th>Gemi Bordo Numarası</th>
+                                    <th>Yayım Tarihi</th>
+                                    <th>Revizyon</th>
+                                    <th>Revizyon Tarihi</th>
+                                    <th>İşlemler</th>
+                                   
+                                </tr>
+                            </thead>
+                            @foreach (var p in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>@p.ProjeKodu</td>
+                                        <td>@p.GemiBordoNumarasi</td>
+                                        <td>@p.YayimTarihi.Date.ToShortDateString()</td>
+                                        <td>@p.Revizyon</td>
+                                        <td>@p.RevizyonTarihi.Date.ToShortDateString()</td>
+                                        <td>
+                                        <a href="/Projeler/ProjeGetir/@p.ProjeId" type="button" class="btn btn-xs btn-success" style="margin: 6px">Güncelle</a>
+                                        <a href="/Projeler/ProjeSil/@p.ProjeId" type="button" class="btn btn-xs btn-danger" style="margin: 6px">Sil</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,141 @@
+﻿@model MARS.Models.Entity.PBSKart
+@{
+    ViewBag.Title = "PBSEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Bakım Kartı Ekle</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/BakimKartlari/PBSIndex/">Bakım Kartları</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Bakım Kartı Ekle</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<br />
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Bakım Kartı Ekle</h5>
+                </div>
+                <div class="ibox-content">
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Dokuman No</label>
+                            @Html.DropDownListFor(x => x.DokumanListe.DokumanListeId, (List<SelectListItem>)ViewBag.dgr60, new { @class = "form-control" })
+                            <br />
+                            <a class="btn btn-primary" data-toggle="modal" data-target=".modal2">GİGN Ekle</a>
+                            <br />
+                            <label>Gemi Birlik Sistemi</label>
+                            @Html.DropDownListFor(x => x.GIGNId, (List<SelectListItem>)ViewBag.dgr61, new { @class = "form-control", placeholder = "Seçiniz", id = "drop" })
+                            <br />
+                            <label>Alt Sistem</label>
+                            @Html.DropDownListFor(x => x.GIGNId, (List<SelectListItem>)ViewBag.dgr61, new { @class = "form-control", id = "drop2" })
+                            <br />
+                            <label>Sistem</label>
+                            @Html.DropDownListFor(x => x.GIGNId, (List<SelectListItem>)ViewBag.dgr61, new { @class = "form-control", id = "drop3" })
+                            <br />
+                            <label>Cihaz</label>
+                            @Html.DropDownListFor(x => x.GIGNId, (List<SelectListItem>)ViewBag.dgr61, new { @class = "form-control", id = "drop4" })
+                            <br />
+                            <label>BİK KODU</label>
+                            <p>
+                                <a class="btn btn-success" data-toggle="modal" data-target=".modal1">Bakınız </a>
+                            </p>
+                            <div class="modal fade modal1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div class="modal-title">Bakım Sisteminde Kullanılan Periyotlar</div>
+                                            <button data-dismiss="modal" class="close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="~/Image/bakımperiyot.PNG" width="470" height="200" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @Html.TextBoxFor(x => x.BikKodu, new { @class = "form-control" })
+                            <br />
+                            <label>Rutbe</label>
+                            @Html.TextBoxFor(x => x.Rutbe, new { @class = "form-control" })
+                            <br />
+                            <label>AxS</label>
+                            @Html.TextBoxFor(x => x.AxS, new { @class = "form-control" })
+                            <br />
+                            <label>Toplam AxS</label>
+                            @Html.TextBoxFor(x => x.ToplamAxS, new { @class = "form-control" })
+                            <br />
+                            <label>Bakım Süresi</label>
+                            @Html.TextBoxFor(x => x.BakimSuresi, new { @class = "form-control" })
+                            <br />
+                            <label>Bakım İşlem Tarifi</label>
+                            @Html.TextBoxFor(x => x.BakimİslemTarifi, new { @class = "form-control" })
+                            <br />
+                            <label>Emniyet Tedbirleri</label>
+                            @Html.TextBoxFor(x => x.EmniyetTedbirleri, new { @class = "form-control" })
+                            <br />
+                            <label>Atıkların Bertarafı</label>
+                            @Html.TextBoxFor(x => x.AtikBertaraf, new { @class = "form-control" })
+                            <br />
+                            <label>Test ve Ölçü Aletleri</label>
+                            @Html.TextBoxFor(x => x.TestOlcuAletleri, new { @class = "form-control" })
+                            <br />
+                            <label>Sarf Malzemeler</label>
+                            @Html.TextBoxFor(x => x.SarfMalzemeleri, new { @class = "form-control" })
+                            <br />
+                            <label>Yedek Parçalar</label>
+                            @Html.TextBoxFor(x => x.YedekParcalar, new { @class = "form-control" })
+                            <br />
+                            <label>Takım Avadanlık</label>
+                            @Html.TextAreaFor(x => x.TakimAvadanlik, new { @class = "form-control" })
+                            <br />
+                            <label>Mevkii</label>
+                            @Html.TextBoxFor(x => x.Mevkii, new { @class = "form-control" })
+                            <br />
+                            <label>BİK Tanıtım Numarası</label>
+                            @Html.TextBoxFor(x => x.BikTanNo, new { @class = "form-control" })
+                            <br />
+                            <label>Yedek Parça İhtiyacı</label>
+                            @Html.TextBoxFor(x => x.YedekKullanim, new { @class = "form-control" })
+                            <br />
+                            <label>Bakım Yöntemi</label>
+                            <div>
+                                <input id="summernote" name="UyariEtiketleri" class="form-control" />
+                            </div>
+                            <br />
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group row">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-white btn-sm" type="submit">Vazgeç</button>
+                                <button class="btn btn-primary btn-sm" type="submit">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+            $(document).ready(function () {
+                $('#proje').select2();
+                allowClear: true
+            });
+    </script>
+
+}
+
+

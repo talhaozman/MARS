@@ -1,0 +1,76 @@
+﻿@using MARS.Models.Entity
+@model List<Kullanicilar> 
+@{
+    ViewBag.Title = "Kullanicilar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Program Kullanıcı Listesi</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">AnaSayfa</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Kullanıcı Listesi</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h4>Program Kullanıcı Listesi</h4>
+                    <a href="/Kullanicilar/KullaniciEkle/" type="button" class="btn btn-xs btn-primary pull-right" style="margin: 6px">Yeni Kullanici</a>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-bordered  table-hover dataTables-proje">
+                            <thead>
+                                <tr>
+                                    <th>TC. Kimlik No</th>
+                                    <th>Adı</th>
+                                    <th>Soyadı</th>
+                                    <th>Telefon No</th>
+                                    <th>Departman</th>
+                                    <th>Ünvanı</th>
+                                    <th>Mail</th>
+                                    <th>İşlemler</th>
+                                    
+
+                                </tr>
+                            </thead>
+                            @foreach (var k in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>@k.TCkimlik</td>
+                                        <td>@k.KullaniciAdi</td>
+                                        <td>@k.KullaniciSoyadi</td>
+                                        <td>@k.KullaniciTel</td>
+                                        <td>@k.KullaniciDepartman</td>
+                                        <td>@k.KullaniciUnvan</td>
+                                        <td>@k.KullaniciMail</td>
+                                        <td>
+                                            <a href="/Kullanicilar/KullaniciGetir/@k.KullaniciId" type="button" class="btn btn-xs btn-success" style="margin: 6px">Güncelle</a>
+                                            <a href="/Kullanicilar/KullaniciSil/@k.KullaniciId" type="button" class="btn btn-xs btn-danger" style="margin: 6px">Sil</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,67 @@
+﻿@using MARS.Models.Entity
+@model List<OnaySayfasi>
+@{
+    ViewBag.Title = "OnaySayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Onay Sayfaları</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">AnaSayfa</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Onay Sayfaları</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h4>Onay Sayfaları</h4>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Dokuman No</th>
+                                    <th>Firma Dokumanı</th>
+                                    <th>Yayım Tarihi</th>
+                                    <th>Dosyalar</th>
+                                </tr>
+                            </thead>
+                            @foreach (var o in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>@o.DokumanListe.DokumanListeId</td>
+                                        <td>@o.FirmaDokumani</td>
+                                        <td>@o.YayimTarihi</td>
+                                        <td>
+                                            @Html.ActionLink("Download", "Download", new { fileName = o.OnayDosyaYolu })
+                                        </td>
+
+
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
